@@ -118,10 +118,10 @@ window.bind('<Right>', lambda event: direct('right'))
 window.bind('<Up>', lambda event: direct('up'))
 window.bind('<Down>', lambda event: direct('down'))
 
-snake = Sn()
-food = obj()
+Sn = Sn()
+obj = obj()
 
-turn(snake, food)
+turn(Sn, obj)
 
 window.mainloop()
 
