@@ -28,5 +28,8 @@ def colis():
 def game_over():
     pass
 
+window = Tk()
+window.title("Snake")
+window.resizable(False, False)
 
     
