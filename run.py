@@ -35,8 +35,49 @@ class obj:
 
 
 
-def turn():
-    pass
+def turn(Sn,obj):
+    x, y = Sn.coordinates[0]
+
+    if direction == "up":
+        y -= SPACE_SIZE
+    elif direction == "down":
+        y += SPACE_SIZE
+    elif direction == "left":
+        x -= SPACE_SIZE
+    elif direction == "right":
+        x += SPACE_SIZE
+
+    Sn.coordinates.insert(0, (x, y))
+
+    square = canvas.create_rectangle(x, y, x + SPACE_SIZE, y + SPACE_SIZE, fill=SNAKE_COLOR)
+
+    Sn.squares.insert(0, square)
+
+    if x == obj.coordinates[0] and y == obj.coordinates[1]:
+
+        global score
+
+        score += 1
+
+        label.config(text="Score:{}".format(score))
+
+        canvas.delete("obj")
+
+        obj = obj()
+
+    else:
+
+        del Sn.coordinates[-1]
+
+        canvas.delete(Sn.squares[-1])
+
+        del Sn.squares[-1]
+
+    if colis(Sn):
+        game_over()
+
+    else:
+        window.after(SPEED, turn, Sn, obj)
 
 def direct():
     pass
