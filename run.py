@@ -11,7 +11,17 @@ FOOD_COLOR = "#008000"
 BACKGROUND_COLOR = "2D2364"
 
 class Sn:
-    pass
+    def __init__(self):
+        self.body_size = BODY_PARTS
+        self.coordinates = []
+        self.squares = []
+
+        for i in range(0, BODY_PARTS):
+            self.coordinates.append([0, 0])
+
+        for x, y in self.coordinates:
+            square = canvas.create_rectangle(x, y, x + SPACE_SIZE, y + SPACE_SIZE, fill=SNAKE_COLOR, tag="snake")
+            self.squares.append(square)
 
 class obj:
     pass
@@ -57,6 +67,13 @@ window.bind('<Left>', lambda event: direct('left'))
 window.bind('<Right>', lambda event: direct('right'))
 window.bind('<Up>', lambda event: direct('up'))
 window.bind('<Down>', lambda event: direct('down'))
+
+snake = Sn()
+food = obj()
+
+turn(snake, food)
+
+window.mainloop()
 
 
 
